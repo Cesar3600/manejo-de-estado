@@ -10,13 +10,14 @@ export const UseState = ({ name }) => {
 
 	useEffect(() => {
 		if (!!loading) {
-			setError(false)
 			setTimeout(() => {
-				if (value !== SECURITY_CODE) {
+				if (value === SECURITY_CODE) {
+					setLoading(false)
+					setError(false)
+				} else {
+					setLoading(false)
 					setError(true)
-					//setValue('')
 				}
-				setLoading(false)
 			}, 1000)
 		}
 	}, [loading])
@@ -33,7 +34,9 @@ export const UseState = ({ name }) => {
 				value={value}
 			/>
 			<button onClick={() => setLoading(true)}>Comprobar</button>
-			{error && <h4>Error: ingrese su codigo de seguridad!</h4>}
+			{error && !loading && (
+				<h4>Error: ingrese su codigo de seguridad!</h4>
+			)}
 			{loading && <p>Cargando ...</p>}
 		</div>
 	)
