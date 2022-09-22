@@ -6,24 +6,11 @@ export const UseState = ({ name }) => {
 	//debugger
 
 	useEffect(() => {
-		console.log('inicio  efecto')
-		//debugger
-
 		setTimeout(() => {
-			console.log('me demore 3 segundos?')
-			if (!loading) {
-				console.log('soy ua falsa de 3 segundos')
-			}
 			if (!!loading) {
-				console.log('haciendo la validacion')
 				setLoading(false)
-				console.log('terminando la validacion')
-				//debugger
 			}
 		}, 3000)
-
-		console.log('fin efecto')
-		//debugger
 	}, [loading])
 
 	//debugger
